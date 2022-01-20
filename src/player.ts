@@ -92,8 +92,7 @@ export function checkMml(player: Player) {
 export function setMelodySequence(
   player: Player,
   melody: mm.NoteSequence,
-  speed = musicSpeed,
-  pitchOffset = 0
+  speed = musicSpeed
 ) {
   player.melodySequence = melody;
   player.melodyVisualizer = getVisualizer(
@@ -106,7 +105,6 @@ export function setMelodySequence(
     melodySynth,
     speed,
     0.03,
-    pitchOffset,
     player.melodyVisualizer
   );
   player.melodyMml = player.melodyMmlInput.value = sequenceToMml(
@@ -117,8 +115,7 @@ export function setMelodySequence(
 export function setBassSequence(
   player: Player,
   bass: mm.NoteSequence,
-  speed = musicSpeed,
-  pitchOffset = 0
+  speed = musicSpeed
 ) {
   player.bassSequence = bass;
   player.bassVisualizer = getVisualizer(
@@ -131,7 +128,6 @@ export function setBassSequence(
     bassSynth,
     speed,
     0.12,
-    pitchOffset,
     player.bassVisualizer
   );
   player.bassMml = player.bassMmlInput.value = sequenceToMml(
@@ -327,7 +323,6 @@ function getPart(
   synth,
   speed: number,
   volume: number,
-  pitchOffset: number,
   visualizer: mm.PianoRollCanvasVisualizer,
   notesSteps = notesStepsCount
 ) {
@@ -339,7 +334,7 @@ function getPart(
     seq.notes.map((s, index) => {
       return {
         time: s.quantizedStartStep * speed,
-        freq: pitchToFreq(s.pitch, pitchOffset),
+        freq: pitchToFreq(s.pitch),
         duration:
           (s.quantizedEndStep - s.quantizedStartStep) * speed - speed / 4,
         index,
@@ -387,6 +382,6 @@ function initSynth() {
   }).toDestination();
 }
 
-function pitchToFreq(pitch, offset) {
-  return 440 * Math.pow(2, (pitch + offset - 69) / 12);
+function pitchToFreq(pitch) {
+  return 440 * Math.pow(2, (pitch - 69) / 12);
 }

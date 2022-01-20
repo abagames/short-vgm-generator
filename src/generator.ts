@@ -30,6 +30,9 @@ export async function generate(
     melody = nextMelody as mm.NoteSequence;
     base = nextBase as mm.NoteSequence;
   }
+  const offset = Math.floor(Math.random() * 16) - 12;
+  shiftPitch(melody, offset);
+  shiftPitch(base, offset);
   if (isCorrectingDiscordance) {
     removeDiscordance(melody, base, notesSteps);
   }
@@ -111,6 +114,15 @@ function addTime(s: mm.NoteSequence) {
       startTime: (4 / notesStepsCount) * n.quantizedStartStep,
       endTime: (4 / notesStepsCount) * n.quantizedEndStep,
     };
+  });
+}
+
+function shiftPitch(s: mm.NoteSequence, offset: number) {
+  s.notes.forEach((n) => {
+    n.pitch += offset;
+    if (n.pitch < 0) {
+      n.pitch = 0;
+    }
   });
 }
 
