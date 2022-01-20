@@ -37,10 +37,24 @@
       </header>
 
       <main>
-        <p class="fs-5 col-md-10">
-          Generate short video game music, automatically, endlessly.
-        </p>
-
+        <div class="row g-5">
+          <div class="col-md-1">State</div>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="state_text" />
+          </div>
+          <div class="col-md-3">
+            <button id="load" class="btn btn-primary" type="button">
+              Load
+            </button>
+            <button
+              id="copy_to_clipboard"
+              class="btn btn-primary"
+              type="button"
+            >
+              Copy to clipboard
+            </button>
+          </div>
+        </div>
         <hr class="col-3 col-md-12 mb-3" />
         <div class="row g-5">
           <div class="col-md-5">
@@ -144,7 +158,6 @@
                 type="radio"
                 name="temperature-radio"
                 id="temperature-radio-1"
-                checked
               />
               <label class="form-check-label" for="temperature-radio-1">
                 1.0
@@ -178,7 +191,6 @@
                 type="radio"
                 name="repeat-radio"
                 id="repeat-radio-2"
-                checked
               />
               <label class="form-check-label" for="repeat-radio-2"> 2 </label>
             </div>
@@ -197,7 +209,6 @@
               type="checkbox"
               value=""
               id="dissonance_check"
-              checked
             />
             Correcting for dissonance
           </div>

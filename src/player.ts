@@ -58,10 +58,16 @@ export function get(
 }
 
 export function setMml(player: Player, melodyMml: string, bassMml: string) {
-  player.melodyMml = player.melodyMmlInput.value = melodyMml;
-  player.bassMml = player.bassMmlInput.value = bassMml;
-  setMelodySequence(player, createSequence(melodyMml));
-  setBassSequence(player, createSequence(bassMml));
+  player.melodyMmlInput.value = melodyMml;
+  player.bassMmlInput.value = bassMml;
+  recreateSequence(player);
+}
+
+export function recreateSequence(player: Player) {
+  player.melodyMml = player.melodyMmlInput.value;
+  player.bassMml = player.bassMmlInput.value;
+  setMelodySequence(player, createSequence(player.melodyMml));
+  setBassSequence(player, createSequence(player.bassMml));
 }
 
 export function checkMml(player: Player) {
