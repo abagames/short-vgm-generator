@@ -30,7 +30,7 @@ export async function generate(
     melody = nextMelody as mm.NoteSequence;
     base = nextBase as mm.NoteSequence;
   }
-  const offset = Math.floor(Math.random() * 16) - 12;
+  const offset = Math.floor(Math.random() * 11) - 5;
   shiftPitch(melody, offset);
   shiftPitch(base, offset);
   if (isCorrectingDiscordance) {
