@@ -2,4 +2,4 @@
 
 Generate short video game music, automatically, endlessly.
 
-<img src="./docs/screenshot.gif" alt="screenshot" width="200%"/>
+<img src="./docs/screenshot.png" alt="screenshot"/>
