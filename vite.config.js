@@ -2,7 +2,7 @@
  * @type {import('vite').UserConfig}
  */
 const config = {
-  base: "https://abagames.github.io/short-vgm-generator/build/",
+  base: "./",
   build: { outDir: "docs/build/" },
 };
 
