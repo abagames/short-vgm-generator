@@ -2,6 +2,8 @@ import * as player from "./player";
 import * as generator from "./generator";
 import { musics } from "./musics";
 
+const enableClipboard = true;
+
 let originPlayer: player.Player;
 let generatedPlayer: player.Player;
 let originPlayButton: HTMLButtonElement;
@@ -125,9 +127,13 @@ function getHTMLElements() {
   ) as HTMLInputElement;
   stateText = document.getElementById("state_text") as HTMLInputElement;
   loadButton = document.getElementById("load") as HTMLButtonElement;
-  copyToClipboardButton = document.getElementById(
-    "copy_to_clipboard"
-  ) as HTMLButtonElement;
+  if (enableClipboard) {
+    copyToClipboardButton = document.createElement("button");
+    copyToClipboardButton.setAttribute("class", "btn btn-primary");
+    copyToClipboardButton.setAttribute("type", "button");
+    copyToClipboardButton.textContent = "Copy to clipboard";
+    document.getElementById("state_buttons").appendChild(copyToClipboardButton);
+  }
 }
 
 function addEventListeners() {
@@ -184,7 +190,9 @@ function addEventListeners() {
     isCorrectingDissonance = correctingDissonanceCheckBox.checked;
   });
   loadButton.addEventListener("click", load);
-  copyToClipboardButton.addEventListener("click", copyToClipboard);
+  if (enableClipboard) {
+    copyToClipboardButton.addEventListener("click", copyToClipboard);
+  }
 }
 
 function setTemperature(index: number) {
