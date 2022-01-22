@@ -8,7 +8,7 @@ It is powered by machine learning with [magenta.js](https://magenta.tensorflow.o
 
 ## HOW TO PLAY
 
-Press the 'Generate' button. It will generate countless pieces of music.
+Press the 'Generate' button. (For the first time, please wait until the initialization of the model for generation is finished.) It will generate countless pieces of music.
 
 ## INSTRUCTIONS
 
